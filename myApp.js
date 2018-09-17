@@ -26,13 +26,18 @@ app.use(express.static(`${__dirname}/public`));
 
 /** 5) serve JSON on a specific route */
 app.get('/json', function(req, res) {
-  res.json({
+  let data = {
     message: 'Hello json'
-  });
+  };
+
+  if (process.env.MESSAGE_STYLE === 'uppercase') {
+    data.message = data.message.toUpperCase();
+  }
+  res.json(data);
 });
 
 /** 6) Use the .env file to configure the app */
-
+process.env.MESSAGE_STYLE='uppercase';
 
 /** 7) Root-level Middleware - A logger */
 //  place it before all the routes !
