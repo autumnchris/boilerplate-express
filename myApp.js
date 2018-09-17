@@ -32,15 +32,16 @@ app.use(express.static(`${__dirname}/public`));
 });*/
 
 /** 6) Use the .env file to configure the app */
+let data = {
+  message: 'Hello json'
+};
+
 app.get('/json', function(req, res) {
-  let data = {
-    message: 'Hello json'
-  };
 
   if (process.env.MESSAGE_STYLE === 'uppercase') {
     data.message = data.message.toUpperCase();
   }
-  res.json(data);
+  return res.json(data);
 });
 
 /** 7) Root-level Middleware - A logger */
