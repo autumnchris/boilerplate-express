@@ -41,7 +41,7 @@ app.get('/json', function(req, res) {
   if (process.env.MESSAGE_STYLE === 'uppercase') {
     data.message = data.message.toUpperCase();
   }
-  return res.json(data);
+  res.json(data);
 });
 
 /** 7) Root-level Middleware - A logger */
