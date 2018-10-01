@@ -68,16 +68,20 @@ app.get('/:word/echo', function(req, res) {
 
 /** 10) Get input from client - Query parameters */
 // /name?first=<firstname>&last=<lastname>
-app.get('/name', function(req, res) {
+/*app.get('/name', function(req, res) {
   res.json({name: `${req.query.first} ${req.query.last}`});
-});
+});*/
 
 /** 11) Get ready for POST Requests - the `body-parser` */
 // place it before all the routes !
 
 
 /** 12) Get data form POST  */
-
+app.route('/name').get(function(req, res) {
+  res.json({name: `${req.query.first} ${req.query.last}`});
+}).post(function(req, res) {
+  res.json({name: `${req.body.first} ${req.body.last}`});
+});
 
 
 // This would be part of the basic setup of an Express app
